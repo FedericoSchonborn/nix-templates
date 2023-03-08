@@ -1,7 +1,4 @@
 {
-} {
-  description = "Project templates for Nix";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -18,8 +15,8 @@
         inherit system;
         overlays = [
           (final: prev: {
-            go = prev."go_1_${goMinor}";
-            buildGoModule = prev."buildGo${goMinor}Module";
+            go = prev."go_1_${builtins.toString goMinor}";
+            buildGoModule = prev."buildGo1${builtins.toString goMinor}Module";
           })
         ];
       };
